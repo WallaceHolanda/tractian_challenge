@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
-import 'package:tractian_challenge/features/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
 
 class EmpresasErroWidget extends StatelessWidget {
   const EmpresasErroWidget({super.key});
