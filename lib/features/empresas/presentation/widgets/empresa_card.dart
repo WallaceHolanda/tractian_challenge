@@ -12,29 +12,35 @@ class EmpresaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 76,
-      width: double.maxFinite,
-      color: Theme.of(context).colorScheme.azulClaro,
-      child: Row(
-        children: [
-          const SizedBox(width: 32),
-          Image.asset(
-            IconsEnum.company.caminho,
-            height: 24,
-            width: 24,
-          ),
-          const SizedBox(width: 16),
-          Text(
-            nome,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).colorScheme.branco,
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, '/assets'),
+      child: Container(
+        height: 76,
+        width: double.maxFinite,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.azulClaro,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Row(
+          children: [
+            const SizedBox(width: 32),
+            Image.asset(
+              IconsEnum.company.caminho,
+              height: 24,
+              width: 24,
             ),
-          )
-        ],
+            const SizedBox(width: 16),
+            Text(
+              nome,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.branco,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -13,6 +13,7 @@ class EmpresasCubit extends Cubit<EmpresasState> {
         super(EmpresasCarregando());
 
   Future<void> obterEmpresas() async {
+    emit(EmpresasCarregando());
     final empresasResult = await _obterEmpresasUsecase();
     empresasResult.fold(
       (_) => emit(EmpresasErro()),

@@ -10,7 +10,7 @@ class EmpresaLocalDatasource implements IEmpresaDatasource {
   @override
   Future<Map<String, dynamic>> obterEmpresas() async {
     try {
-      Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       String jsonString = await rootBundle.loadString(
         LocalDataEnum.companies.caminho,
       );

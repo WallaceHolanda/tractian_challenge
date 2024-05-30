@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/core/assets/images_enum.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
+import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_erro_widget.dart';
+import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_loading_widget.dart';
+import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_widget.dart';
+import 'package:tractian_challenge/features/empresas/presentation/widgets/sem_dados_widget.dart';
 
 class EmpresasPage extends StatefulWidget {
   const EmpresasPage({super.key});
@@ -37,23 +41,18 @@ class _EmpresasPageState extends State<EmpresasPage> {
                 width: MediaQuery.sizeOf(context).width * 0.4,
               ),
             ),
-            BlocBuilder<EmpresasCubit, EmpresasState>(
-              builder: (context, state) {
-                return switch (state) {
-                  EmpresasCarregando() => const SizedBox(
-                      child: Text('Carregando'),
-                    ),
-                  EmpresasErro() => const SizedBox(
-                      child: Text('Erro'),
-                    ),
-                  EmpresasSemDados() => const SizedBox(
-                      child: Text('Sem Dados'),
-                    ),
-                  EmpresasSucesso() => const SizedBox(
-                      child: Text('Sucesso'),
-                    ),
-                };
-              },
+            Expanded(
+              child: BlocBuilder<EmpresasCubit, EmpresasState>(
+                builder: (context, state) {
+                  return switch (state) {
+                    EmpresasCarregando() => const EmpresasLoadingWidget(),
+                    EmpresasErro() => const EmpresasErroWidget(),
+                    EmpresasSemDados() => const SemDadosWidget(),
+                    EmpresasSucesso() =>
+                      EmpresasWidget(empresas: state.empresas),
+                  };
+                },
+              ),
             ),
           ],
         ),
