@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "tractian-dev",
+            "request": "launch",
+            "type": "dart",
+            "env": {},
+        },
+    ]
+}
