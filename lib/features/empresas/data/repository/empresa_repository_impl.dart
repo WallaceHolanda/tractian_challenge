@@ -13,13 +13,20 @@ class EmpresaRepositoryImpl implements IEmpresaRepository {
 
   @override
   Future<Either<Failure, List<EmpresaEntity>>> obterEmpresas() async {
-    final response = await _datasource.obterEmpresas();
-    List<EmpresaEntity> empresas = [];
-    if (response['data'].isNotEmpty) {
-      empresas = response['data']
-          .map((empresa) => EmpresaModel.fromMap(empresa))
-          .toList();
+    try {
+      final response = await _datasource.obterEmpresas();
+
+      if (response['data'] != null && response['data'].isNotEmpty) {
+        final dados = response['data'] as List;
+        final empresas =
+            dados.map((empresa) => EmpresaModel.fromMap(empresa)).toList();
+        return Right(empresas);
+      }
+      return const Right([]);
+    } on Failure catch (failure) {
+      return Left(failure);
+    } catch (_) {
+      return Left(LocalFailure());
     }
-    return Right(empresas);
   }
 }

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tractian_challenge/core/dependencia/app_dependencia.dart';
+import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
 import 'package:tractian_challenge/features/empresas/presentation/empresas_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Color.fromRGBO(23, 25, 45, 1),
   ));
 
+  await AppDependencia().inicializar();
   runApp(const MyApp());
 }
 
@@ -24,7 +31,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const EmpresasPage(),
+        '/': (context) => BlocProvider(
+              create: (context) => GetIt.instance<EmpresasCubit>(),
+              child: const EmpresasPage(),
+            ),
         '/assets': (context) => Container(),
       },
     );
