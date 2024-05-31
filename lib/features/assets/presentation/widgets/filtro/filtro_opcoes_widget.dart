@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/assets/presentation/widgets/asset_text_form_field.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_notifier.dart';
 import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
 import 'package:tractian_challenge/features/core/widgets/filtro_widget.dart';
@@ -34,35 +35,18 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
       ),
       child: Column(
         children: [
-          TextFormField(
+          AssetTextFormField(
+            maxLength: 40,
             focusNode: focusNode,
             controller: textController,
             onTapOutside: (_) => focusNode.unfocus(),
-            onChanged: (texto) {
-              debugPrint("Critico: ${criticoFiltro.habilitado.value}");
-              debugPrint("Sensor: ${sensorFiltro.habilitado.value}");
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Theme.of(context).colorScheme.neutralGrey,
-              contentPadding: const EdgeInsets.only(
-                left: 14.0,
-                bottom: 8.0,
-                top: 8.0,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.white,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.white,
-                ),
-              ),
+            hintText: AppStringsEnum.buscarAtivoOuLocal.texto,
+            prefixIcon: Icon(
+              Icons.search,
+              size: 14,
+              color: Theme.of(context).colorScheme.gray,
             ),
+            onChanged: (texto) {},
           ),
           const SizedBox(height: 8),
           Row(
