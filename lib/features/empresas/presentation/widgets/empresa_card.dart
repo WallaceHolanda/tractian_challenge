@@ -38,7 +38,7 @@ class EmpresaCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.branco,
+                color: Theme.of(context).colorScheme.white,
               ),
             ),
           ],

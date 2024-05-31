@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_opcoes_widget.dart';
 import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
 
 class AssetsPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _AssetsPageState extends State<AssetsPage> {
           onPressed: Navigator.of(context).pop,
           icon: Icon(
             Icons.chevron_left,
-            color: Theme.of(context).colorScheme.branco,
+            color: Theme.of(context).colorScheme.white,
             size: 32,
           ),
         ),
@@ -34,20 +35,14 @@ class _AssetsPageState extends State<AssetsPage> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w400,
-            color: Theme.of(context).colorScheme.branco,
+            color: Theme.of(context).colorScheme.white,
           ),
         ),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              height: 48,
-              width: double.maxFinite,
-              child: Text(
-                AppStringsEnum.assets.texto,
-              ),
-            ),
+            FiltroOpcoesWidget(),
           ],
         ),
       ),
