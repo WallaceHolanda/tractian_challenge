@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tractian_challenge/core/dependencia/app_dependencia.dart';
+import 'package:tractian_challenge/features/assets/presentation/assets_page.dart';
+import 'package:tractian_challenge/features/core/utils/app_routes_enum.dart';
 import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
 import 'package:tractian_challenge/features/empresas/presentation/empresas_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,11 +33,13 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => BlocProvider(
+        AppRoutesEnum.empresas.rota: (context) => BlocProvider(
               create: (context) => GetIt.instance<EmpresasCubit>(),
               child: const EmpresasPage(),
             ),
-        '/assets': (context) => Container(),
+        AppRoutesEnum.assets.rota: (context) => AssetsPage(
+              companyId: ModalRoute.of(context)?.settings.arguments as String,
+            ),
       },
     );
   }

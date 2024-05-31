@@ -28,34 +28,24 @@ class _EmpresasPageState extends State<EmpresasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 48,
-              width: double.maxFinite,
-              color: Theme.of(context).colorScheme.azulEscuro,
-              child: Image.asset(
-                ImagesEnum.logo.caminho,
-                height: 18,
-                width: MediaQuery.sizeOf(context).width * 0.4,
-              ),
-            ),
-            Expanded(
-              child: BlocBuilder<EmpresasCubit, EmpresasState>(
-                builder: (context, state) {
-                  return switch (state) {
-                    EmpresasCarregando() => const EmpresasLoadingWidget(),
-                    EmpresasErro() => const EmpresasErroWidget(),
-                    EmpresasSemDados() => const SemDadosWidget(),
-                    EmpresasSucesso() =>
-                      EmpresasWidget(empresas: state.empresas),
-                  };
-                },
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.azulEscuro,
+        title: Image.asset(
+          ImagesEnum.logo.caminho,
+          height: 18,
+          width: MediaQuery.sizeOf(context).width * 0.4,
         ),
+      ),
+      body: BlocBuilder<EmpresasCubit, EmpresasState>(
+        builder: (context, state) {
+          return switch (state) {
+            EmpresasCarregando() => const EmpresasLoadingWidget(),
+            EmpresasErro() => const EmpresasErroWidget(),
+            EmpresasSemDados() => const SemDadosWidget(),
+            EmpresasSucesso() => EmpresasWidget(empresas: state.empresas),
+          };
+        },
       ),
     );
   }

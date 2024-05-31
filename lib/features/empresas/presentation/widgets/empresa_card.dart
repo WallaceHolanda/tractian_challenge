@@ -4,16 +4,18 @@ import 'package:tractian_challenge/core/color_scheme_extension.dart';
 
 class EmpresaCard extends StatelessWidget {
   final String nome;
+  final VoidCallback onTap;
 
   const EmpresaCard({
     super.key,
     required this.nome,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(context, '/assets'),
+      onTap: onTap,
       child: Container(
         height: 76,
         width: double.maxFinite,
