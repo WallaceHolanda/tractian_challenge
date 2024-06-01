@@ -44,7 +44,7 @@ List<ItemEntity> mockItems = const [
   ),
   AssetEntity(
     id: '7',
-    name: 'Component 1.1.1.1.1',
+    name: 'Component 1.2',
     sensorType: 'vibration',
     status: 'alert',
     itens: [],

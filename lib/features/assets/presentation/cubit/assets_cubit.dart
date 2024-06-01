@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/asset_entity.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/filtro_params.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/location_entity.dart';
 import 'package:tractian_challenge/features/assets/domain/usecases/obter_assets_usecase.dart';
 import 'package:tractian_challenge/features/assets/domain/usecases/obter_locations_usecase.dart';
 import 'package:tractian_challenge/features/assets/presentation/itens_mock.dart';
@@ -70,20 +72,47 @@ class AssetsCubit extends Cubit<AssetsState> {
     List<ItemEntity> itensFiltrados = [];
 
     for (var item in itens) {
-      List<ItemEntity> filteredChildren = _fitrarItens(
+      List<ItemEntity> nosFilho = _fitrarItens(
         itens: item.itens,
         filtro: filtro,
       );
 
-      if (item.name.toLowerCase().contains(filtro.nome.toLowerCase()) ||
-          filteredChildren.isNotEmpty) {
+      bool statusCritico = !filtro.isCritico;
+      bool sensorEnergia = !filtro.isSensorEnergia;
+      bool possuiString = filtro.nome.isEmpty ||
+          item.name.toLowerCase().contains(
+                filtro.nome.toLowerCase(),
+              );
+
+      if (item is AssetEntity) {
+        if (filtro.isCritico) {
+          statusCritico = item.isCritico;
+        }
+
+        if (filtro.isSensorEnergia) {
+          sensorEnergia = item.isSensorEnergia;
+        }
+      }
+
+      if ((possuiString && statusCritico && sensorEnergia) ||
+          nosFilho.isNotEmpty) {
         itensFiltrados.add(
-          ItemEntity(
-            id: item.id,
-            name: item.name,
-            itens: filteredChildren,
-            parentId: item.parentId,
-          ),
+          item is AssetEntity
+              ? AssetEntity(
+                  id: item.id,
+                  name: item.name,
+                  parentId: item.parentId,
+                  locationId: item.locationId,
+                  sensorType: item.sensorType,
+                  status: item.status,
+                  itens: nosFilho,
+                )
+              : LocationEntity(
+                  id: item.id,
+                  name: item.name,
+                  parentId: item.parentId,
+                  itens: nosFilho,
+                ),
         );
       }
     }
