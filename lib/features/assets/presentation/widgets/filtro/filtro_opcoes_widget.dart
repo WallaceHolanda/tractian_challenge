@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/filtro_params.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/asset_text_form_field.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_notifier.dart';
 import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
@@ -8,7 +9,7 @@ import 'package:tractian_challenge/features/core/utils/debouncer.dart';
 import 'package:tractian_challenge/features/core/widgets/filtro_widget.dart';
 
 class FiltroOpcoesWidget extends StatefulWidget {
-  final Future<void> Function(String) filtrar;
+  final Future<void> Function(FiltroParams) filtrar;
 
   const FiltroOpcoesWidget({
     super.key,
@@ -26,8 +27,8 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
   final criticoFiltro = FiltroNotifier();
   final _debouncer = Debouncer(milliseconds: 500);
 
-  void _filtrarItem(String texto) async {
-    _debouncer.run(() async => await widget.filtrar(texto));
+  void _filtrarItem(FiltroParams filtro) async {
+    _debouncer.run(() async => await widget.filtrar(filtro));
   }
 
   @override
@@ -57,7 +58,13 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
               size: 14,
               color: Theme.of(context).colorScheme.gray,
             ),
-            onChanged: (texto) => _filtrarItem(texto),
+            onChanged: (texto) => _filtrarItem(
+              FiltroParams(
+                nome: texto,
+                isCritico: criticoFiltro.habilitado.value,
+                isSensorEnergia: sensorFiltro.habilitado.value,
+              ),
+            ),
           ),
           const SizedBox(height: 8),
           Row(
@@ -71,6 +78,13 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
                   titulo: AppStringsEnum.sensorDeEnergia.texto,
                   onPressed: () {
                     sensorFiltro.alteraValor();
+                    _filtrarItem(
+                      FiltroParams(
+                        nome: textController.text,
+                        isCritico: criticoFiltro.habilitado.value,
+                        isSensorEnergia: sensorFiltro.habilitado.value,
+                      ),
+                    );
                   },
                 ),
               ),
@@ -84,6 +98,13 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
                   width: MediaQuery.sizeOf(context).width * 0.28,
                   onPressed: () {
                     criticoFiltro.alteraValor();
+                    _filtrarItem(
+                      FiltroParams(
+                        nome: textController.text,
+                        isCritico: criticoFiltro.habilitado.value,
+                        isSensorEnergia: sensorFiltro.habilitado.value,
+                      ),
+                    );
                   },
                 ),
               ),

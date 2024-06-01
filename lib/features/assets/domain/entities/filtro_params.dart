@@ -1,5 +1,5 @@
 class FiltroParams {
-  final String? nome;
+  final String nome;
   final bool isSensorEnergia;
   final bool isCritico;
 
@@ -9,6 +9,5 @@ class FiltroParams {
     this.isCritico = false,
   });
 
-  bool get isFiltroAtivo =>
-      nome?.isNotEmpty == true || isSensorEnergia || isCritico;
+  bool get isFiltroAtivo => nome.isNotEmpty || isSensorEnergia || isCritico;
 }

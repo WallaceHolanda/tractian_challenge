@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/filtro_params.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
 import 'package:tractian_challenge/features/assets/domain/usecases/obter_assets_usecase.dart';
 import 'package:tractian_challenge/features/assets/domain/usecases/obter_locations_usecase.dart';
@@ -45,12 +46,14 @@ class AssetsCubit extends Cubit<AssetsState> {
     }
   }
 
-  // Trocar o filtro pelo filtro params
-  Future<void> filtrarItens(String filtro) async {
+  Future<void> filtrarItens(FiltroParams filtro) async {
     try {
-      if (filtro.isNotEmpty) {
+      if (filtro.isFiltroAtivo) {
         emit(AssetsFiltroCarregando());
-        final itensFiltrados = _fitrarItens(itensTotais, filtro);
+        final itensFiltrados = _fitrarItens(
+          itens: itensTotais,
+          filtro: filtro,
+        );
         emit(AssetsSucesso(itens: itensFiltrados));
       } else {
         emit(AssetsSucesso(itens: itensTotais));
@@ -60,13 +63,19 @@ class AssetsCubit extends Cubit<AssetsState> {
     }
   }
 
-  List<ItemEntity> _fitrarItens(List<ItemEntity> itens, String filtro) {
+  List<ItemEntity> _fitrarItens({
+    required List<ItemEntity> itens,
+    required FiltroParams filtro,
+  }) {
     List<ItemEntity> itensFiltrados = [];
 
     for (var item in itens) {
-      List<ItemEntity> filteredChildren = _fitrarItens(item.itens, filtro);
+      List<ItemEntity> filteredChildren = _fitrarItens(
+        itens: item.itens,
+        filtro: filtro,
+      );
 
-      if (item.name.toLowerCase().contains(filtro.toLowerCase()) ||
+      if (item.name.toLowerCase().contains(filtro.nome.toLowerCase()) ||
           filteredChildren.isNotEmpty) {
         itensFiltrados.add(
           ItemEntity(
