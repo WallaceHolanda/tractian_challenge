@@ -1,69 +1,52 @@
+import 'package:tractian_challenge/features/assets/domain/entities/asset_entity.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/location_entity.dart';
 
 List<ItemEntity> mockItems = const [
-  ItemEntity(
-    id: '2',
-    name: 'Sub Folder 1',
+  LocationEntity(
+    id: '1',
+    name: 'Location 1',
     itens: [
-      ItemEntity(
-        id: '3',
-        name: 'Sub Sub Folder 1',
+      LocationEntity(
+        id: '2',
+        parentId: '1',
+        name: 'Sub-Location 1.1',
         itens: [
-          ItemEntity(
-            id: '4',
-            name: 'File 1.1.1',
-            itens: [],
-          ),
-          ItemEntity(
-            id: '5',
-            name: 'File 1.1.2',
-            itens: [],
-          ),
-        ],
-      ),
-      ItemEntity(
-        id: '6',
-        name: 'File 1.2',
-        itens: [],
-      ),
-    ],
-  ),
-  ItemEntity(
-    id: '7',
-    name: 'Sub Folder 2',
-    itens: [
-      ItemEntity(
-        id: '8',
-        name: 'Sub Sub Folder 2',
-        itens: [
-          ItemEntity(
-            id: '9',
-            name: 'Sub Sub Sub Folder 1',
+          AssetEntity(
+            id: '3',
+            locationId: '2',
+            name: 'Asset 1.1.1',
             itens: [
-              ItemEntity(
-                id: '10',
-                name: 'File 2.1.1.1',
-                itens: [],
-              ),
-              ItemEntity(
-                id: '11',
-                name: 'File 2.1.1.2',
-                itens: [],
+              AssetEntity(
+                id: '4',
+                parentId: '3',
+                name: 'Sub-Asset 1.1.1.1',
+                itens: [
+                  AssetEntity(
+                    id: '5',
+                    parentId: '3',
+                    sensorType: 'energy',
+                    name: 'Component 1.1.1.1.1',
+                    itens: [],
+                  ),
+                ],
               ),
             ],
           ),
-          ItemEntity(
-            id: '12',
-            name: 'File 2.1.2',
+          AssetEntity(
+            id: '6',
+            name: 'Asset 1.1.2',
             itens: [],
           ),
         ],
       ),
     ],
   ),
-  ItemEntity(
-    id: '13',
-    name: 'File 3',
+  AssetEntity(
+    id: '7',
+    name: 'Component 1.1.1.1.1',
+    sensorType: 'vibration',
+    status: 'alert',
     itens: [],
   ),
 ];

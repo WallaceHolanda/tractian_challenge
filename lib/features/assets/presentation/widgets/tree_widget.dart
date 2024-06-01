@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
+import 'package:tractian_challenge/features/assets/utils/item_mixin.dart';
 
-class TreeWidget extends StatelessWidget {
+class TreeWidget extends StatelessWidget with ItemMixin {
   final List<ItemEntity> itens;
-  final int profundidade;
+  final int nivel;
 
   const TreeWidget({
     super.key,
     required this.itens,
-    this.profundidade = 0,
+    this.nivel = 0,
   });
 
   @override
@@ -20,7 +21,7 @@ class TreeWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = itens[index];
         return Padding(
-          padding: EdgeInsets.only(left: profundidade * 16.0),
+          padding: EdgeInsets.only(left: nivel * 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,8 +41,20 @@ class TreeWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: 8,
+                        left: item.itens.isNotEmpty ? 0 : 8,
+                      ),
+                      child: Image.asset(
+                        obterIconeItem(item)!,
+                        width: 16,
+                        height: 16,
+                      ),
+                    ),
                     Text(
                       item.name.toUpperCase(),
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -52,7 +65,7 @@ class TreeWidget extends StatelessWidget {
                 ),
               ),
               if (item.itens.isNotEmpty)
-                TreeWidget(itens: item.itens, profundidade: profundidade + 1),
+                TreeWidget(itens: item.itens, nivel: nivel + 1),
             ],
           ),
         );
