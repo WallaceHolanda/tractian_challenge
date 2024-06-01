@@ -15,4 +15,12 @@ final class AssetsErro extends AssetsState {}
 
 final class AssetsSemDados extends AssetsState {}
 
-final class AssetsSucesso extends AssetsState {}
+final class AssetsFiltroCarregando extends AssetsState {}
+
+final class AssetsSucesso extends AssetsState {
+  final List<ItemEntity> itens;
+  const AssetsSucesso({required this.itens});
+
+  @override
+  List<Object> get props => [super.props, itens];
+}

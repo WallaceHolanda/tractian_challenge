@@ -4,10 +4,16 @@ import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/asset_text_form_field.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_notifier.dart';
 import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/debouncer.dart';
 import 'package:tractian_challenge/features/core/widgets/filtro_widget.dart';
 
 class FiltroOpcoesWidget extends StatefulWidget {
-  const FiltroOpcoesWidget({super.key});
+  final Future<void> Function(String) filtrar;
+
+  const FiltroOpcoesWidget({
+    super.key,
+    required this.filtrar,
+  });
 
   @override
   State<FiltroOpcoesWidget> createState() => _FiltroOpcoesWidgetState();
@@ -18,6 +24,11 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
   final textController = TextEditingController();
   final sensorFiltro = FiltroNotifier();
   final criticoFiltro = FiltroNotifier();
+  final _debouncer = Debouncer(milliseconds: 500);
+
+  void _filtrarItem(String texto) async {
+    _debouncer.run(() async => await widget.filtrar(texto));
+  }
 
   @override
   void dispose() {
@@ -46,7 +57,7 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
               size: 14,
               color: Theme.of(context).colorScheme.gray,
             ),
-            onChanged: (texto) {},
+            onChanged: (texto) => _filtrarItem(texto),
           ),
           const SizedBox(height: 8),
           Row(

@@ -3,12 +3,12 @@ import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
 
 class TreeWidget extends StatelessWidget {
-  final List<ItemEntity> items;
+  final List<ItemEntity> itens;
   final int profundidade;
 
   const TreeWidget({
     super.key,
-    required this.items,
+    required this.itens,
     this.profundidade = 0,
   });
 
@@ -16,9 +16,9 @@ class TreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: items.length,
+      itemCount: itens.length,
       itemBuilder: (context, index) {
-        final item = items[index];
+        final item = itens[index];
         return Padding(
           padding: EdgeInsets.only(left: profundidade * 16.0),
           child: Column(
@@ -52,7 +52,7 @@ class TreeWidget extends StatelessWidget {
                 ),
               ),
               if (item.itens.isNotEmpty)
-                TreeWidget(items: item.itens, profundidade: profundidade + 1),
+                TreeWidget(itens: item.itens, profundidade: profundidade + 1),
             ],
           ),
         );
