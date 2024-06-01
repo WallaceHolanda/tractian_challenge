@@ -18,4 +18,13 @@ mixin ItemMixin {
 
     return null;
   }
+
+  String? obterIconeAsset(ItemEntity item) {
+    if (item is AssetEntity) {
+      if (item.isCritico) return IconsEnum.alert.caminho;
+      if (item.isSensorEnergia) return IconsEnum.energy.caminho;
+    }
+
+    return null;
+  }
 }

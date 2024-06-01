@@ -20,8 +20,11 @@ class TreeWidget extends StatelessWidget with ItemMixin {
       itemCount: itens.length,
       itemBuilder: (context, index) {
         final item = itens[index];
+        final icone = obterIconeItem(item);
+        final iconeAsset = obterIconeAsset(item);
+
         return Padding(
-          padding: EdgeInsets.only(left: nivel * 16.0),
+          padding: EdgeInsets.only(left: nivel * 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,31 +39,43 @@ class TreeWidget extends StatelessWidget with ItemMixin {
                           quarterTurns: 1,
                           child: Icon(
                             Icons.chevron_right,
-                            size: 10,
+                            size: 16,
                             color: Theme.of(context).colorScheme.azulEscuro,
                           ),
                         ),
                       ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: 8,
-                        left: item.itens.isNotEmpty ? 0 : 8,
+                    if (icone != null)
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: 8,
+                          left: item.itens.isNotEmpty ? 0 : 8,
+                        ),
+                        child: Image.asset(
+                          icone,
+                          width: 16,
+                          height: 16,
+                        ),
                       ),
-                      child: Image.asset(
-                        obterIconeItem(item)!,
-                        width: 16,
-                        height: 16,
+                    Flexible(
+                      child: Text(
+                        item.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.azulEscuro,
+                        ),
                       ),
                     ),
-                    Text(
-                      item.name.toUpperCase(),
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.azulEscuro,
+                    if (iconeAsset != null)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Image.asset(
+                          iconeAsset,
+                          width: 16,
+                          height: 16,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
