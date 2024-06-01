@@ -4,6 +4,7 @@ class LocationModel extends LocationEntity {
   const LocationModel({
     required super.id,
     required super.name,
+    required super.itens,
     super.parentId,
   });
 
@@ -12,6 +13,7 @@ class LocationModel extends LocationEntity {
       id: map['id'],
       name: map['name'],
       parentId: map['parentId'],
+      itens: const [],
     );
   }
 }

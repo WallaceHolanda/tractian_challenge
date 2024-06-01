@@ -8,6 +8,7 @@ class AssetEntity extends ItemEntity {
   const AssetEntity({
     required super.id,
     required super.name,
+    required super.itens,
     super.parentId,
     this.locationId,
     this.sensorType,

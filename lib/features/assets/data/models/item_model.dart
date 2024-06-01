@@ -4,6 +4,7 @@ class ItemModel extends ItemEntity {
   const ItemModel({
     required super.id,
     required super.name,
+    required super.itens,
     super.parentId,
   });
 
@@ -12,6 +13,7 @@ class ItemModel extends ItemEntity {
       id: map['id'],
       name: map['name'],
       parentId: map['parentId'],
+      itens: const [],
     );
   }
 }

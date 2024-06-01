@@ -4,6 +4,7 @@ class LocationEntity extends ItemEntity {
   const LocationEntity({
     required super.id,
     required super.name,
+    required super.itens,
     super.parentId,
   });
 }
