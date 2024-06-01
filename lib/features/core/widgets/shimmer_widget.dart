@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
 
 class ShimmerWidget extends StatelessWidget {
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
   final Color? color;
   final double? borderRadius;
 
   const ShimmerWidget({
     super.key,
-    required this.height,
-    required this.width,
+    this.height,
+    this.width,
     this.color,
     this.borderRadius,
   });

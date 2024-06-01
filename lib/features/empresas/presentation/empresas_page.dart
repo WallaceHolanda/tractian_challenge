@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/core/assets/images_enum.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
 import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_erro_widget.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_loading_widget.dart';
+import 'package:tractian_challenge/features/core/widgets/erro_widget.dart';
+import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_carregando_widget.dart';
 import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_widget.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/sem_dados_widget.dart';
+import 'package:tractian_challenge/features/core/widgets/sem_dados_widget.dart';
 
 class EmpresasPage extends StatefulWidget {
   const EmpresasPage({super.key});
@@ -40,9 +41,13 @@ class _EmpresasPageState extends State<EmpresasPage> {
       body: BlocBuilder<EmpresasCubit, EmpresasState>(
         builder: (context, state) {
           return switch (state) {
-            EmpresasCarregando() => const EmpresasLoadingWidget(),
-            EmpresasErro() => const EmpresasErroWidget(),
-            EmpresasSemDados() => const SemDadosWidget(),
+            EmpresasCarregando() => const EmpresasCarregandoWidget(),
+            EmpresasErro() => ErroWidget(
+                texto: AppStringsEnum.ocorreuUmErroAoListarAsEmpresas.texto,
+              ),
+            EmpresasSemDados() => SemDadosWidget(
+                texto: AppStringsEnum.naoExistemEmpresasDisponiveis.texto,
+              ),
             EmpresasSucesso() => EmpresasWidget(empresas: state.empresas),
           };
         },

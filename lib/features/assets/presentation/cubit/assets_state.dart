@@ -13,4 +13,6 @@ final class AssetsCarregando extends AssetsState {}
 
 final class AssetsErro extends AssetsState {}
 
+final class AssetsSemDados extends AssetsState {}
+
 final class AssetsSucesso extends AssetsState {}

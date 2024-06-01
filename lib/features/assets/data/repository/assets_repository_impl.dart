@@ -21,9 +21,8 @@ class AssetsRepositoryImpl implements IAssetsRepository {
     try {
       final response = await _datasource.obterAssets(companyId);
       if (response["data"] != null && response["data"].isNotEmpty) {
-        final dados = response["data"];
-        final List<AssetEntity> assets =
-            dados.map((asset) => AssetModel.fromMap(asset)).toList();
+        final dados = response["data"] as List;
+        final assets = dados.map((asset) => AssetModel.fromMap(asset)).toList();
         return Right(assets);
       }
       return const Right([]);
@@ -42,8 +41,8 @@ class AssetsRepositoryImpl implements IAssetsRepository {
     try {
       final response = await _datasource.obterAssets(companyId);
       if (response["data"] != null && response["data"].isNotEmpty) {
-        final dados = response["data"];
-        final List<LocationEntity> locations =
+        final dados = response["data"] as List;
+        final locations =
             dados.map((location) => LocationModel.fromMap(location)).toList();
         return Right(locations);
       }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/core/widgets/shimmer_widget.dart';
 
-class EmpresasLoadingWidget extends StatelessWidget {
-  const EmpresasLoadingWidget({super.key});
+class EmpresasCarregandoWidget extends StatelessWidget {
+  const EmpresasCarregandoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
