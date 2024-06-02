@@ -19,6 +19,9 @@ class AssetEntity extends ItemEntity {
 
   bool get isComponent => sensorType != null;
 
+  bool get isComponentUnico =>
+      isComponent && parentId == null && locationId == null;
+
   bool get isSensorEnergia => sensorType == SensorTypeEnum.energy.tipo;
 
   bool get isCritico => status == AssetStatusEnum.alert.tipo;
