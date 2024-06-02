@@ -13,7 +13,7 @@ class LocationModel extends LocationEntity {
       id: map['id'],
       name: map['name'],
       parentId: map['parentId'],
-      itens: const [],
+      itens: [],
     );
   }
 }

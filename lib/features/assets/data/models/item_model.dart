@@ -1,7 +1,7 @@
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
 
 class ItemModel extends ItemEntity {
-  const ItemModel({
+  ItemModel({
     required super.id,
     required super.name,
     required super.itens,
@@ -13,7 +13,7 @@ class ItemModel extends ItemEntity {
       id: map['id'],
       name: map['name'],
       parentId: map['parentId'],
-      itens: const [],
+      itens: [],
     );
   }
 }

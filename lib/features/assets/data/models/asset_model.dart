@@ -19,7 +19,7 @@ class AssetModel extends AssetEntity {
       parentId: map['parentId'],
       sensorType: map['sensorType'],
       status: map['status'],
-      itens: const [],
+      itens: [],
     );
   }
 }
