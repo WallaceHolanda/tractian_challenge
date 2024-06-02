@@ -18,6 +18,7 @@ class TreeWidget extends StatelessWidget with ItemMixin {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: itens.length,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         final item = itens[index];
         final icone = obterIconeItem(item);

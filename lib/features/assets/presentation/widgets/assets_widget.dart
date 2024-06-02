@@ -25,6 +25,8 @@ class AssetsWidget extends StatelessWidget {
       return SemDadosWidget(texto: AppStringsEnum.semResultados.texto);
     }
 
-    return TreeWidget(itens: itens);
+    return ListView(
+      children: [TreeWidget(itens: itens)],
+    );
   }
 }

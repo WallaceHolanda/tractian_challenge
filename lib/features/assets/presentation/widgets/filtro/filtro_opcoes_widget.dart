@@ -25,7 +25,7 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
   final textController = TextEditingController();
   final sensorFiltro = FiltroNotifier();
   final criticoFiltro = FiltroNotifier();
-  final _debouncer = Debouncer(milliseconds: 500);
+  final _debouncer = Debouncer(milliseconds: 400);
 
   void _filtrarItem(FiltroParams filtro) async {
     _debouncer.run(() async => await widget.filtrar(filtro));
