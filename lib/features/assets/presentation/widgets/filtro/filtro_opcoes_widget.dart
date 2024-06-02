@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/filtro_params.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/asset_text_form_field.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_notifier.dart';
-import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
 import 'package:tractian_challenge/features/core/utils/debouncer.dart';
 import 'package:tractian_challenge/features/core/widgets/filtro_widget.dart';
 
@@ -56,7 +56,7 @@ class _FiltroOpcoesWidgetState extends State<FiltroOpcoesWidget> {
             prefixIcon: Icon(
               Icons.search,
               size: 14,
-              color: Theme.of(context).colorScheme.gray,
+              color: AppColorsEnum.gray.cor,
             ),
             onChanged: (texto) => _filtrarItem(
               FiltroParams(

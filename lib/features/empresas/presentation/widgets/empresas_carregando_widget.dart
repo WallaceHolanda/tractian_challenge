@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 import 'package:tractian_challenge/features/core/widgets/shimmer_widget.dart';
 
 class EmpresasCarregandoWidget extends StatelessWidget {
@@ -20,7 +20,7 @@ class EmpresasCarregandoWidget extends StatelessWidget {
             height: 76,
             width: double.maxFinite,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.azulClaro,
+              color: AppColorsEnum.lightBlue.cor,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Center(
@@ -28,17 +28,19 @@ class EmpresasCarregandoWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    const SizedBox(width: 32),
-                    const ShimmerWidget(
+                    const SizedBox(width: 24),
+                    ShimmerWidget(
                       height: 24,
                       width: 24,
-                      borderRadius: 5,
+                      borderRadius: 2,
+                      color: AppColorsEnum.white.cor.withOpacity(0.8),
                     ),
                     const SizedBox(width: 16),
                     ShimmerWidget(
                       height: 24,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      borderRadius: 5,
+                      width: MediaQuery.sizeOf(context).width * 0.35,
+                      borderRadius: 2,
+                      color: AppColorsEnum.white.cor.withOpacity(0.8),
                     ),
                   ],
                 ),

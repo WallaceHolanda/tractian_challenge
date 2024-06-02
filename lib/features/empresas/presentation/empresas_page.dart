@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/core/assets/images_enum.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
-import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
 import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
 import 'package:tractian_challenge/features/core/widgets/erro_widget.dart';
 import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_carregando_widget.dart';
@@ -31,7 +31,7 @@ class _EmpresasPageState extends State<EmpresasPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.azulEscuro,
+        backgroundColor: AppColorsEnum.darkBlue.cor,
         title: Image.asset(
           ImagesEnum.logo.caminho,
           height: 18,

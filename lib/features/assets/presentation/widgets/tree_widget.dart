@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
 import 'package:tractian_challenge/features/assets/utils/item_mixin.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
 class TreeWidget extends StatelessWidget with ItemMixin {
   final List<ItemEntity> itens;
@@ -40,7 +40,7 @@ class TreeWidget extends StatelessWidget with ItemMixin {
                           child: Icon(
                             Icons.chevron_right,
                             size: 16,
-                            color: Theme.of(context).colorScheme.azulEscuro,
+                            color: AppColorsEnum.darkBlue.cor,
                           ),
                         ),
                       ),
@@ -63,7 +63,7 @@ class TreeWidget extends StatelessWidget with ItemMixin {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Theme.of(context).colorScheme.azulEscuro,
+                          color: AppColorsEnum.darkBlue.cor,
                         ),
                       ),
                     ),

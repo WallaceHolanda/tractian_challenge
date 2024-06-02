@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
 class EmpresaCard extends StatelessWidget {
   final String nome;
@@ -20,7 +20,7 @@ class EmpresaCard extends StatelessWidget {
         height: 76,
         width: double.maxFinite,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.azulClaro,
+          color: AppColorsEnum.lightBlue.cor,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
@@ -38,7 +38,7 @@ class EmpresaCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.white,
+                color: AppColorsEnum.white.cor,
               ),
             ),
           ],

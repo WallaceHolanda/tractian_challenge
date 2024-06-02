@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/assets_carregando_widget.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/tree_widget.dart';
-import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
 import 'package:tractian_challenge/features/core/widgets/sem_dados_widget.dart';
 
 class AssetsWidget extends StatelessWidget {

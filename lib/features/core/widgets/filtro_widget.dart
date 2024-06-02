@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
 class FiltroWidget extends StatelessWidget {
   final double width;
@@ -18,26 +18,24 @@ class FiltroWidget extends StatelessWidget {
     required this.onPressed,
   });
 
-  Color _obterBackground(context) => isSelecionado
-      ? Theme.of(context).colorScheme.azulClaro
-      : Theme.of(context).colorScheme.white;
+  Color get _background =>
+      isSelecionado ? AppColorsEnum.lightBlue.cor : AppColorsEnum.white.cor;
 
-  Color _obterCor(context) => isSelecionado
-      ? Theme.of(context).colorScheme.white
-      : Theme.of(context).colorScheme.bodyText;
+  Color get _cor =>
+      isSelecionado ? AppColorsEnum.white.cor : AppColorsEnum.bodyText.cor;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: _obterBackground(context),
+        backgroundColor: _background,
         padding: const EdgeInsets.symmetric(
           vertical: 8,
         ),
         side: BorderSide(
           width: 1,
-          color: Theme.of(context).colorScheme.brancoBorda,
+          color: AppColorsEnum.whiteBorder.cor,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(3),
@@ -52,7 +50,7 @@ class FiltroWidget extends StatelessWidget {
               icone.caminho,
               height: 16,
               width: 16,
-              color: _obterCor(context),
+              color: _cor,
             ),
             const SizedBox(width: 6),
             Expanded(
@@ -63,7 +61,7 @@ class FiltroWidget extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: _obterCor(context),
+                  color: _cor,
                 ),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/features/core/utils/app_routes_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_routes_enum.dart';
 import 'package:tractian_challenge/features/empresas/domain/entities/empresa_entity.dart';
 import 'package:tractian_challenge/features/empresas/presentation/widgets/empresa_card.dart';
 

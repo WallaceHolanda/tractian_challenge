@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
 class ErroWidget extends StatelessWidget {
   final String texto;
@@ -18,7 +18,7 @@ class ErroWidget extends StatelessWidget {
           Icon(
             Icons.error,
             size: 48,
-            color: Theme.of(context).colorScheme.azulEscuro,
+            color: AppColorsEnum.darkBlue.cor,
           ),
           const SizedBox(height: 24),
           Padding(
@@ -31,7 +31,7 @@ class ErroWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.azulEscuro,
+                color: AppColorsEnum.darkBlue.cor,
               ),
             ),
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
-import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
 
 class AssetTextFormField extends StatelessWidget {
   final int maxLength;
@@ -33,7 +33,7 @@ class AssetTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         counterText: AppStringsEnum.vazio.texto,
-        fillColor: Theme.of(context).colorScheme.neutralGray,
+        fillColor: AppColorsEnum.neutralGray.cor,
         contentPadding: const EdgeInsets.only(
           left: 14.0,
           bottom: 8.0,
@@ -42,20 +42,20 @@ class AssetTextFormField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.white,
+            color: AppColorsEnum.white.cor,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.white,
+            color: AppColorsEnum.white.cor,
           ),
         ),
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: Theme.of(context).colorScheme.gray,
+          color: AppColorsEnum.gray.cor,
         ),
         prefixIcon: prefixIcon,
       ),

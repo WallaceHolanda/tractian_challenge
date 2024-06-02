@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:tractian_challenge/core/dependencia/app_dependencia.dart';
 import 'package:tractian_challenge/features/assets/presentation/assets_page.dart';
 import 'package:tractian_challenge/features/assets/presentation/cubit/assets_cubit.dart';
-import 'package:tractian_challenge/features/core/utils/app_routes_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_routes_enum.dart';
 import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
 import 'package:tractian_challenge/features/empresas/presentation/empresas_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

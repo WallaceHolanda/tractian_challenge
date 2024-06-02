@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
 class ShimmerWidget extends StatelessWidget {
   final double? height;
@@ -21,7 +21,7 @@ class ShimmerWidget extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: color ?? Theme.of(context).colorScheme.gray.withOpacity(0.8),
+        color: color ?? AppColorsEnum.gray.cor.withOpacity(0.8),
         borderRadius:
             borderRadius != null ? BorderRadius.circular(borderRadius!) : null,
       ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tractian_challenge/core/color_scheme_extension.dart';
 import 'package:tractian_challenge/features/assets/presentation/cubit/assets_cubit.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/assets_carregando_widget.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/assets_widget.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_opcoes_widget.dart';
-import 'package:tractian_challenge/features/core/utils/app_strings_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
+import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
 import 'package:tractian_challenge/features/core/widgets/erro_widget.dart';
 import 'package:tractian_challenge/features/core/widgets/sem_dados_widget.dart';
 
@@ -36,12 +36,12 @@ class _AssetsPageState extends State<AssetsPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.azulEscuro,
+        backgroundColor: AppColorsEnum.darkBlue.cor,
         leading: IconButton(
           onPressed: Navigator.of(context).pop,
           icon: Icon(
             Icons.chevron_left,
-            color: Theme.of(context).colorScheme.white,
+            color: AppColorsEnum.white.cor,
             size: 32,
           ),
         ),
@@ -50,7 +50,7 @@ class _AssetsPageState extends State<AssetsPage> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w400,
-            color: Theme.of(context).colorScheme.white,
+            color: AppColorsEnum.white.cor,
           ),
         ),
       ),
@@ -83,7 +83,7 @@ class _AssetsPageState extends State<AssetsPage> {
               ),
               Divider(
                 thickness: 0.5,
-                color: Theme.of(context).colorScheme.gray,
+                color: AppColorsEnum.gray.cor,
               ),
               Expanded(
                 child: Padding(
