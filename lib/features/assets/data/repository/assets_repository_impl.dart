@@ -39,7 +39,7 @@ class AssetsRepositoryImpl implements IAssetsRepository {
     String companyId,
   ) async {
     try {
-      final response = await _datasource.obterAssets(companyId);
+      final response = await _datasource.obterLocations(companyId);
       if (response["data"] != null && response["data"].isNotEmpty) {
         final dados = response["data"] as List;
         final locations =

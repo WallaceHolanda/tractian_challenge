@@ -36,11 +36,11 @@ class AssetsLocalDatasource implements IAssetsDatasource {
         LocalDataEnum.locations.caminho,
       );
 
-      final assets = jsonDecode(jsonString);
+      final locations = jsonDecode(jsonString);
 
-      for (final asset in assets) {
-        if (asset["id"] == companyId) {
-          return {"data": asset["locations"]};
+      for (final location in locations) {
+        if (location["id"] == companyId) {
+          return {"data": location["locations"]};
         }
       }
 
