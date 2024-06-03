@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tractian_challenge/features/assets/domain/entities/asset_entity.dart';
 import 'package:tractian_challenge/features/assets/domain/entities/item_entity.dart';
+import 'package:tractian_challenge/features/assets/presentation/widgets/asset_icone_widget.dart';
 import 'package:tractian_challenge/features/assets/utils/item_mixin.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
@@ -29,7 +31,6 @@ class _TreeWidgetState extends State<TreeWidget> with ItemMixin {
       itemBuilder: (context, index) {
         final item = widget.itens[index];
         final icone = obterIconeItem(item);
-        final iconeAsset = obterIconeAsset(item);
         final isExpanded = expandedMap[index] ?? false;
 
         return Column(
@@ -83,15 +84,7 @@ class _TreeWidgetState extends State<TreeWidget> with ItemMixin {
                       ),
                     ),
                   ),
-                  if (iconeAsset != null)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Image.asset(
-                        iconeAsset,
-                        width: 16,
-                        height: 16,
-                      ),
-                    ),
+                  if (item is AssetEntity) AssetIconeWidget(item: item)
                 ],
               ),
             ),
