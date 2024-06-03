@@ -1,5 +1,5 @@
 enum AppRoutesEnum {
-  empresas('/'),
+  companies('/'),
   assets('/assets'),
   ;
 

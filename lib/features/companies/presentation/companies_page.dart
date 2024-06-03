@@ -3,26 +3,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/core/assets/images_enum.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_strings_enum.dart';
-import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
+import 'package:tractian_challenge/features/companies/presentation/cubit/companies_cubit.dart';
 import 'package:tractian_challenge/features/core/widgets/erro_widget.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_carregando_widget.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/empresas_widget.dart';
+import 'package:tractian_challenge/features/companies/presentation/widgets/companies_carregando_widget.dart';
+import 'package:tractian_challenge/features/companies/presentation/widgets/companies_widget.dart';
 import 'package:tractian_challenge/features/core/widgets/sem_dados_widget.dart';
 
-class EmpresasPage extends StatefulWidget {
-  const EmpresasPage({super.key});
+class CompaniesPage extends StatefulWidget {
+  const CompaniesPage({super.key});
 
   @override
-  State<EmpresasPage> createState() => _EmpresasPageState();
+  State<CompaniesPage> createState() => _CompaniesPageState();
 }
 
-class _EmpresasPageState extends State<EmpresasPage> {
-  late final EmpresasCubit cubit;
+class _CompaniesPageState extends State<CompaniesPage> {
+  late final CompaniesCubit cubit;
 
   @override
   void initState() {
-    cubit = context.read<EmpresasCubit>();
-    cubit.obterEmpresas();
+    cubit = context.read<CompaniesCubit>();
+    cubit.obterCompanies();
     super.initState();
   }
 
@@ -38,17 +38,17 @@ class _EmpresasPageState extends State<EmpresasPage> {
           width: MediaQuery.sizeOf(context).width * 0.4,
         ),
       ),
-      body: BlocBuilder<EmpresasCubit, EmpresasState>(
+      body: BlocBuilder<CompaniesCubit, CompaniesState>(
         builder: (context, state) {
           return switch (state) {
-            EmpresasCarregando() => const EmpresasCarregandoWidget(),
-            EmpresasErro() => ErroWidget(
+            CompaniesCarregando() => const CompaniesCarregandoWidget(),
+            CompaniesErro() => ErroWidget(
                 texto: AppStringsEnum.ocorreuUmErroAoListarAsEmpresas.texto,
               ),
-            EmpresasSemDados() => SemDadosWidget(
+            CompaniesSemDados() => SemDadosWidget(
                 texto: AppStringsEnum.naoExistemEmpresasDisponiveis.texto,
               ),
-            EmpresasSucesso() => EmpresasWidget(empresas: state.empresas),
+            CompaniesSucesso() => CompaniesWidget(companies: state.companies),
           };
         },
       ),

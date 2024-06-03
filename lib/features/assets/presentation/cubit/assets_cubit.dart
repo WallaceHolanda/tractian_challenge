@@ -54,7 +54,6 @@ class AssetsCubit extends Cubit<AssetsState> {
               for (final asset in assets) {
                 if (asset.isComponentUnico) {
                   _itensTotais.add(asset);
-                  // Verificar para assets individuais
                 } else {
                   assetMap[asset.id] = asset;
                 }

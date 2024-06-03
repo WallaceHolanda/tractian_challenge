@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tractian_challenge/core/assets/local_data_enum.dart';
 import 'package:tractian_challenge/core/erro/failure.dart';
-import 'package:tractian_challenge/features/empresas/data/datasource/i_empresa_datasource.dart';
+import 'package:tractian_challenge/features/companies/data/datasource/i_company_datasource.dart';
 
-class EmpresaLocalDatasource implements IEmpresaDatasource {
+class CompanyLocalDatasource implements ICompanyDatasource {
   @override
-  Future<Map<String, dynamic>> obterEmpresas() async {
+  Future<Map<String, dynamic>> obterCompanies() async {
     try {
       await Future.delayed(const Duration(seconds: 2));
       String jsonString = await rootBundle.loadString(

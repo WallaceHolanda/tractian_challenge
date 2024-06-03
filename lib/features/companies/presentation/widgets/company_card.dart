@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tractian_challenge/core/assets/icons_enum.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
-class EmpresaCard extends StatelessWidget {
+class CompanyCard extends StatelessWidget {
   final String nome;
   final VoidCallback onTap;
 
-  const EmpresaCard({
+  const CompanyCard({
     super.key,
     required this.nome,
     required this.onTap,

@@ -5,8 +5,8 @@ import 'package:tractian_challenge/core/dependencia/app_dependencia.dart';
 import 'package:tractian_challenge/features/assets/presentation/assets_page.dart';
 import 'package:tractian_challenge/features/assets/presentation/cubit/assets_cubit.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_routes_enum.dart';
-import 'package:tractian_challenge/features/empresas/presentation/cubit/empresas_cubit.dart';
-import 'package:tractian_challenge/features/empresas/presentation/empresas_page.dart';
+import 'package:tractian_challenge/features/companies/presentation/cubit/companies_cubit.dart';
+import 'package:tractian_challenge/features/companies/presentation/companies_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        AppRoutesEnum.empresas.rota: (context) => BlocProvider(
-              create: (context) => GetIt.instance<EmpresasCubit>(),
-              child: const EmpresasPage(),
+        AppRoutesEnum.companies.rota: (context) => BlocProvider(
+              create: (context) => GetIt.instance<CompaniesCubit>(),
+              child: const CompaniesPage(),
             ),
         AppRoutesEnum.assets.rota: (context) => BlocProvider(
               create: (context) => GetIt.instance<AssetsCubit>(),

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_routes_enum.dart';
-import 'package:tractian_challenge/features/empresas/domain/entities/empresa_entity.dart';
-import 'package:tractian_challenge/features/empresas/presentation/widgets/empresa_card.dart';
+import 'package:tractian_challenge/features/companies/domain/entities/company_entity.dart';
+import 'package:tractian_challenge/features/companies/presentation/widgets/company_card.dart';
 
-class EmpresasWidget extends StatelessWidget {
-  final List<EmpresaEntity> empresas;
+class CompaniesWidget extends StatelessWidget {
+  final List<CompanyEntity> companies;
 
-  const EmpresasWidget({
+  const CompaniesWidget({
     super.key,
-    required this.empresas,
+    required this.companies,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: empresas.length,
+      itemCount: companies.length,
       padding: const EdgeInsets.only(
         top: 30,
         left: 22,
@@ -22,12 +22,12 @@ class EmpresasWidget extends StatelessWidget {
       ),
       itemBuilder: (context, index) => Column(
         children: [
-          EmpresaCard(
-            nome: empresas[index].name,
+          CompanyCard(
+            nome: companies[index].name,
             onTap: () => Navigator.pushNamed(
               context,
               AppRoutesEnum.assets.rota,
-              arguments: empresas[index].id,
+              arguments: companies[index].id,
             ),
           ),
           const SizedBox(height: 40),
