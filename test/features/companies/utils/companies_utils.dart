@@ -1,6 +1,14 @@
 import 'package:tractian_challenge/core/erro/failure.dart';
 import 'package:tractian_challenge/features/companies/domain/entities/company_entity.dart';
 
+Map<String, dynamic> tSemDadosResponse = {
+  "data": [],
+};
+
+Map<String, dynamic> tBadResponse = {
+  "data": "lista",
+};
+
 Map<String, dynamic> tCompaniesResponse = {
   "data": [
     {"id": "1", "name": "Jaguar Unit"},

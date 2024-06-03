@@ -18,7 +18,7 @@ void main() {
   });
 
   group('Testes do Método obterCompanies()', () {
-    test("""Deve retornar uma lista de companies quando o datasource restorar 
+    test("""Deve retornar uma lista de companies quando o datasource retornar 
     uma resposta com dados""", () async {
       when(() => datasource.obterCompanies()).thenAnswer(
         (_) async => tCompaniesResponse,
@@ -32,6 +32,26 @@ void main() {
     do datasource""", () async {
       when(() => datasource.obterCompanies()).thenAnswer(
         (_) async => throw LocalFailure(),
+      );
+
+      final result = await repository.obterCompanies();
+      expect(result.isLeft(), true);
+    });
+
+    test("""Deve retornar uma lista vazia quando o datasource retornar 
+    uma resposta sem dados""", () async {
+      when(() => datasource.obterCompanies()).thenAnswer(
+        (_) async => tSemDadosResponse,
+      );
+
+      final result = await repository.obterCompanies();
+      expect(result.isRight(), true);
+    });
+
+    test("""Deve retornar uma Failure quando o datasource retornar uma resposta 
+    incorreta""", () async {
+      when(() => datasource.obterCompanies()).thenAnswer(
+        (_) async => tBadResponse,
       );
 
       final result = await repository.obterCompanies();
