@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/features/assets/presentation/cubit/assets_cubit.dart';
-import 'package:tractian_challenge/features/assets/presentation/widgets/assets_carregando_widget.dart';
+import 'package:tractian_challenge/features/assets/presentation/widgets/assets_page_carregando_widget.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/assets_widget.dart';
 import 'package:tractian_challenge/features/assets/presentation/widgets/filtro/filtro_opcoes_widget.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
@@ -61,7 +61,7 @@ class _AssetsPageState extends State<AssetsPage> {
           }
 
           if (state is AssetsCarregando) {
-            return const AssetsCarregandoWidget();
+            return const AssetsPageCarregandoWidget();
           }
 
           if (state is AssetsErro) {

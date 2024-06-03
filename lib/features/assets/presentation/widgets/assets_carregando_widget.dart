@@ -7,7 +7,7 @@ class AssetsCarregandoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 3,
+      itemCount: 2,
       padding: const EdgeInsets.only(
         top: 30,
         left: 22,
