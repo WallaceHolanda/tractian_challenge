@@ -159,8 +159,9 @@ class AssetsCubit extends Cubit<AssetsState> {
         }
       }
 
-      if ((possuiString && statusCritico && sensorEnergia) ||
-          nosFilho.isNotEmpty) {
+      bool contemFiltro = possuiString && statusCritico && sensorEnergia;
+
+      if (contemFiltro || nosFilho.isNotEmpty) {
         itensFiltrados.add(
           item is AssetEntity
               ? AssetEntity(
@@ -170,13 +171,13 @@ class AssetsCubit extends Cubit<AssetsState> {
                   locationId: item.locationId,
                   sensorType: item.sensorType,
                   status: item.status,
-                  itens: nosFilho,
+                  itens: contemFiltro ? item.itens : nosFilho,
                 )
               : LocationEntity(
                   id: item.id,
                   name: item.name,
                   parentId: item.parentId,
-                  itens: nosFilho,
+                  itens: contemFiltro ? item.itens : nosFilho,
                 ),
         );
       }
