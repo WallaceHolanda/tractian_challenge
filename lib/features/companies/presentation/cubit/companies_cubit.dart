@@ -10,7 +10,7 @@ class CompaniesCubit extends Cubit<CompaniesState> {
 
   CompaniesCubit(ObterCompaniesUsecase obterCompaniesUsecase)
       : _obterCompaniesUsecase = obterCompaniesUsecase,
-        super(CompaniesCarregando());
+        super(CompaniesInitial());
 
   Future<void> obterCompanies() async {
     emit(CompaniesCarregando());

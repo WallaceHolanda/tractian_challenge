@@ -41,6 +41,7 @@ class _CompaniesPageState extends State<CompaniesPage> {
       body: BlocBuilder<CompaniesCubit, CompaniesState>(
         builder: (context, state) {
           return switch (state) {
+            CompaniesInitial() => const SizedBox(),
             CompaniesCarregando() => const CompaniesCarregandoWidget(),
             CompaniesErro() => ErroWidget(
                 texto: AppStringsEnum.ocorreuUmErroAoListarAsEmpresas.texto,

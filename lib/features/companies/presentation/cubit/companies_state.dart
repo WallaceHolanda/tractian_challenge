@@ -7,6 +7,8 @@ sealed class CompaniesState extends Equatable {
   List<Object> get props => [];
 }
 
+final class CompaniesInitial extends CompaniesState {}
+
 final class CompaniesCarregando extends CompaniesState {}
 
 final class CompaniesErro extends CompaniesState {}
