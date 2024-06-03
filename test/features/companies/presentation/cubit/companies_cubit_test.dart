@@ -29,7 +29,7 @@ void main() {
   blocTest<CompaniesCubit, CompaniesState>(
     'Deve emitir [Carregando, Sucesso] quando as companies forem obtidas',
     build: () {
-      when(() => usecase()).thenAnswer((_) async => const Right(tCompanyList));
+      when(() => usecase()).thenAnswer((_) async => Right(tCompanyList));
       return cubit;
     },
     act: (cubit) async {

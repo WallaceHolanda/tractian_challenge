@@ -21,11 +21,11 @@ void main() {
 
   test('Deve retornar uma lista de companies', () async {
     when(() => repository.obterCompanies()).thenAnswer(
-      (_) async => const Right(tCompanyList),
+      (_) async => Right(tCompanyList),
     );
 
     final resultado = await usecase();
-    expect(resultado, const Right(tCompanyList));
+    expect(resultado, Right(tCompanyList));
   });
 
   test('Deve retornar um LocalFailure caso acorra algum erro na obtenção',
