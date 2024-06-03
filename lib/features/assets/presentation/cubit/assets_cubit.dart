@@ -60,9 +60,6 @@ class AssetsCubit extends Cubit<AssetsState> {
                 }
               }
 
-              // Verificar se seria necessário adicionar o components
-              // asset.isComponent antes de executar o for abaixo
-
               // Adiciona Componentes e Sub-Assets
               for (final asset in assets) {
                 if (asset.parentId != null &&

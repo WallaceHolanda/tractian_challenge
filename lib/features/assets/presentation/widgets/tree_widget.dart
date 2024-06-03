@@ -3,53 +3,62 @@ import 'package:tractian_challenge/features/assets/domain/entities/item_entity.d
 import 'package:tractian_challenge/features/assets/utils/item_mixin.dart';
 import 'package:tractian_challenge/features/core/utils/enums/app_colors_enum.dart';
 
-class TreeWidget extends StatelessWidget with ItemMixin {
+class TreeWidget extends StatefulWidget {
   final List<ItemEntity> itens;
   final int nivel;
 
-  const TreeWidget({
-    super.key,
-    required this.itens,
-    this.nivel = 0,
-  });
+  const TreeWidget({super.key, required this.itens, this.nivel = 0});
+
+  @override
+  State<TreeWidget> createState() => _TreeWidgetState();
+}
+
+class _TreeWidgetState extends State<TreeWidget> with ItemMixin {
+  final Map<int, bool> _expandedMap = {};
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: itens.length,
+      itemCount: widget.itens.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        final item = itens[index];
+        final item = widget.itens[index];
         final icone = obterIconeItem(item);
         final iconeAsset = obterIconeAsset(item);
+        final isExpanded = _expandedMap[index] ?? false;
 
         return Padding(
-          padding: EdgeInsets.only(left: nivel * 8),
+          padding: EdgeInsets.only(left: (widget.nivel * 12.0)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.only(bottom: 8.0),
                 child: Row(
                   children: [
                     if (item.itens.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: RotatedBox(
-                          quarterTurns: 1,
-                          child: Icon(
-                            Icons.chevron_right,
-                            size: 16,
-                            color: AppColorsEnum.darkBlue.cor,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => _expandedMap[index] = !isExpanded);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 4.0),
+                          child: RotatedBox(
+                            quarterTurns: isExpanded ? 4 : 1,
+                            child: Icon(
+                              Icons.chevron_right,
+                              size: 16,
+                              color: AppColorsEnum.darkBlue.cor,
+                            ),
                           ),
                         ),
                       ),
                     if (icone != null)
                       Padding(
                         padding: EdgeInsets.only(
-                          right: 8,
-                          left: item.itens.isNotEmpty ? 0 : 8,
+                          right: 6.0,
+                          left: item.itens.isNotEmpty ? 0 : 6.0,
                         ),
                         child: Image.asset(
                           icone,
@@ -70,7 +79,7 @@ class TreeWidget extends StatelessWidget with ItemMixin {
                     ),
                     if (iconeAsset != null)
                       Padding(
-                        padding: const EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8.0),
                         child: Image.asset(
                           iconeAsset,
                           width: 16,
@@ -80,8 +89,11 @@ class TreeWidget extends StatelessWidget with ItemMixin {
                   ],
                 ),
               ),
-              if (item.itens.isNotEmpty)
-                TreeWidget(itens: item.itens, nivel: nivel + 1),
+              if (isExpanded)
+                TreeWidget(
+                  itens: item.itens,
+                  nivel: widget.nivel + 1,
+                ),
             ],
           ),
         );
