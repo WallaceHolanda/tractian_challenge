@@ -98,21 +98,25 @@ class AssetsCubit extends Cubit<AssetsState> {
                 }
               });
 
-              _itensTotais = _itensTotais.reversed.toList();
-              emit(AssetsSucesso(itens: _itensTotais));
+              if (_itensTotais.isNotEmpty) {
+                _itensTotais = _itensTotais.reversed.toList();
+                emit(AssetsSucesso(itens: _itensTotais));
+              } else {
+                emit(AssetsSemDados());
+              }
             },
           );
         },
       );
-    } catch (_) {
+    } catch (e) {
       emit(AssetsErro());
     }
   }
 
   Future<void> filtrarItens(FiltroParams filtro) async {
     try {
+      emit(AssetsFiltroCarregando());
       if (filtro.isFiltroAtivo) {
-        emit(AssetsFiltroCarregando());
         final itensFiltrados = _fitrarItens(
           itens: _itensTotais,
           filtro: filtro,
