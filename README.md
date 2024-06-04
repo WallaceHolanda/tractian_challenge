@@ -13,10 +13,10 @@
   Este app faz parte do desafio técnico da Tractian. Tendo como principais funcionalidades:
 
   - Listagem de Empresas;
-  - Visualização dos Assets em Árvore; e,
+  - Visualização dos Assets em Árvore;
   - Filtro por nome, status e sensor.
   
-  O app foi projetado seguindo o Clean Arquitecture, com a divisão de camadas em: Data, Domain, and Presentation.
+  O app foi projetado seguindo o Clean Architecture, com a divisão de camadas em: Data, Domain, e Presentation.
   
 </p>
 
