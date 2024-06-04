@@ -7,7 +7,7 @@
 </p>
 
 
-# :iphone: About the Project
+## :iphone: About the Project
 
 <p>
   Este app faz parte do desafio técnico da Tractian. Tendo como principais funcionalidades:
@@ -21,12 +21,17 @@
 </p>
 
 
-# :camera: Screenshots
+## :camera: Screenshots
 <div align="center">
    <img src="readme/images/image_1.png" width="250"/>
    <img src="readme/images/image_2.png" width="250"/>
    <img src="readme/images/image_3.png" width="250"/>
 </div>
+
+## 🎥 Video
+
+https://github.com/WallaceHolanda/tractian_challenge/assets/31262152/2abd7c18-44b9-4b8a-a7d2-aa621b79772d
+
 
 
 ## :rocket: Packages
